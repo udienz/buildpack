@@ -1,0 +1,52 @@
+image: docker:latest
+
+services:
+- docker:dind
+
+before_script:
+- docker info
+
+build-precise:
+  stage: build
+  script:
+  - cd precise; docker build -t test-precise .
+
+build-trusty:
+  stage: build
+  script:
+  - cd trusty; docker build -t test-trusty .
+
+build-xenial:
+  stage: build
+  script:
+  - cd xenial; docker build -t test-xenial .
+
+build-centos5:
+  stage: build
+  script:
+  - cd centos5; docker build -t test-centos5 .
+
+build-centos6:
+  stage: build
+  script:
+  - cd centos6; docker build -t test-centos6 .
+  
+build-centos7:
+  stage: build
+  script:
+  - cd centos7; docker build -t test-centos7 .
+
+build-wheezy:
+  stage: build
+  script:
+  - cd wheezy; docker build -t test-wheezy .
+
+build-jessie:
+  stage: build
+  script:
+  - cd jessie; docker build -t test-jessie .
+
+build-stretch:
+  stage: build
+  script:
+  - cd stretch; docker build -t test-stretch .
