@@ -1,6 +1,7 @@
 image: udienz/dind
 
 before_script:
+- service docker start
 - docker info
 
 build-precise:
