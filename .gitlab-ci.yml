@@ -1,4 +1,4 @@
-image: udienz/dind
+image: docker:latest
 
 services:
 - docker:dind
