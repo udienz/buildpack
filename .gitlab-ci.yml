@@ -1,0 +1,61 @@
+image: docker:latest
+
+services:
+ - docker:dind
+
+stages:
+ - build
+ - test
+ - deploy
+
+before_script:
+ - docker info
+
+
+build-centos5:
+ stage: test
+ script:
+  - docker build -t images-centos5 $CI_PROJECT_DIR/centos5
+  - docker tag images-centos5 udienz/buildpack:centos5
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos5
+
+build-centos6:
+ stage: test
+ script:
+  - docker build -t images-centos6 $CI_PROJECT_DIR/centos6
+  - docker tag images-centos6 udienz/buildpack:centos6
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos6
+
+build-centos7:
+ stage: test
+ script:
+  - docker build -t images-centos7 $CI_PROJECT_DIR/centos7
+  - docker tag images-centos7 udienz/buildpack:centos7
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos7
+
+build-precise:
+ stage: test
+ script:
+  - docker build -t images-precise $CI_PROJECT_DIR/precise
+  - docker tag images-precise udienz/buildpack:precise
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:precise
+
+build-trusty:
+ stage: test
+ script:
+  - docker build -t images-trusty $CI_PROJECT_DIR/trusty
+  - docker tag images-trusty udienz/buildpack:trusty
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:trusty
+
+build-xenial:
+ stage: test
+ script:
+  - docker build -t images-xenial $CI_PROJECT_DIR/xenial
+  - docker tag images-xenial udienz/buildpack:xenial
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:xenial
