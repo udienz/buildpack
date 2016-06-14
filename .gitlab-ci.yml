@@ -88,3 +88,4 @@ trigger:
   type: deploy
   script:
     - "curl -X POST -F token=$TOKEN -F ref=$REF_NAME https://git.mahyudd.in/api/v3/projects/155/trigger/builds"
+  when: on_success
