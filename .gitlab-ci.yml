@@ -1,49 +1,85 @@
-image: udienz/dind
+image: docker:latest
+
+services:
+ - docker:dind
+
+stages:
+ - build
+ - test
+ - deploy
 
 before_script:
-- docker info
+ - docker info
 
-build-precise:
-  stage: build
-  script:
-  - cd precise; docker build -t test-precise .
-
-build-trusty:
-  stage: build
-  script:
-  - cd trusty; docker build -t test-trusty .
-
-build-xenial:
-  stage: build
-  script:
-  - cd xenial; docker build -t test-xenial .
 
 build-centos5:
-  stage: build
-  script:
-  - cd centos5; docker build -t test-centos5 .
+ stage: test
+ script:
+  - docker build -t buildpack-centos5 $CI_PROJECT_DIR/centos5
+  - docker tag buildpack-centos5 udienz/buildpack:centos5
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos5
 
 build-centos6:
-  stage: build
-  script:
-  - cd centos6; docker build -t test-centos6 .
-  
+ stage: test
+ script:
+  - docker build -t buildpack-centos6 $CI_PROJECT_DIR/centos6
+  - docker tag buildpack-centos6 udienz/buildpack:centos6
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos6
+
 build-centos7:
-  stage: build
-  script:
-  - cd centos7; docker build -t test-centos7 .
+ stage: test
+ script:
+  - docker build -t buildpack-centos7 $CI_PROJECT_DIR/centos7
+  - docker tag buildpack-centos7 udienz/buildpack:centos7
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos7
+
+build-precise:
+ stage: test
+ script:
+  - docker build -t buildpack-precise $CI_PROJECT_DIR/precise
+  - docker tag buildpack-precise udienz/buildpack:precise
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:precise
+
+build-trusty:
+ stage: test
+ script:
+  - docker build -t buildpack-trusty $CI_PROJECT_DIR/trusty
+  - docker tag buildpack-trusty udienz/buildpack:trusty
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:trusty
+
+build-xenial:
+ stage: test
+ script:
+  - docker build -t buildpack-xenial $CI_PROJECT_DIR/xenial
+  - docker tag buildpack-xenial udienz/buildpack:xenial
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:xenial
 
 build-wheezy:
-  stage: build
-  script:
-  - cd wheezy; docker build -t test-wheezy .
+ stage: test
+ script:
+  - docker build -t buildpack-wheezy $CI_PROJECT_DIR/wheezy
+  - docker tag buildpack-wheezy udienz/buildpack:wheezy
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:wheezy
 
 build-jessie:
-  stage: build
-  script:
-  - cd jessie; docker build -t test-jessie .
+ stage: test
+ script:
+  - docker build -t buildpack-jessie $CI_PROJECT_DIR/jessie
+  - docker tag buildpack-jessie udienz/buildpack:jessie
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:jessie
 
 build-stretch:
-  stage: build
-  script:
-  - cd stretch; docker build -t test-stretch .
+ stage: test
+ script:
+  - docker build -t buildpack-stretch $CI_PROJECT_DIR/stretch
+  - docker tag buildpack-stretch udienz/buildpack:stretch
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:stretch

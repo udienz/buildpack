@@ -6,7 +6,7 @@ MAINTAINER Mahyuddin Susanto <mahyuddin@wowrack.com>
 # Install Packages
 RUN yum update -y \
     && yum install -y --nogpg epel-release \
-    && yum install -y --nogpg wget subversion bzrtools mercurial cvs rubygems ruby-devel \
-    && yum groupinstall "Development tools" -y \
+    && yum install -y --nogpg wget subversion bzrtools mercurial cvs \
     && yum update -y \
+    && yum groupinstall -y "Development Tools" \
     && yum clean all
