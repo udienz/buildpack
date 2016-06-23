@@ -83,3 +83,9 @@ build-stretch:
   - docker tag buildpack-stretch udienz/buildpack:stretch
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:stretch
+
+trigger:
+  type: deploy
+  script:
+    - curl -X POST -F token= -F ref= https://git.mahyudd.in/api/v3/projects/155/trigger/builds
+  when: on_success

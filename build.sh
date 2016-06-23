@@ -32,4 +32,9 @@ build-$x:
   - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
   - docker push udienz/buildpack:$x" >> $OUT
 done
-
+echo "
+trigger:
+  type: deploy
+  script:
+    - "curl -X POST -F token=$TOKEN -F ref=$REF_NAME https://git.mahyudd.in/api/v3/projects/155/trigger/builds"
+  when: on_success" >> $OUT
