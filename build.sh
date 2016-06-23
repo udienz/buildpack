@@ -33,6 +33,13 @@ build-$x:
   - docker push udienz/buildpack:$x" >> $OUT
 done
 echo "
+stage: test
+script:
+  - docker build -t buildpack-latest \$CI_PROJECT_DIR/xenial
+  - docker tag buildpack-latest udienz/buildpack:latest
+  - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
+  - docker push udienz/buildpack:latest
+
 trigger:
   type: deploy
   script:
