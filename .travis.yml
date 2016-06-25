@@ -7,4 +7,5 @@ services: docker
 cache: bundler
 before_script:
     - npm install -g dockerfile_lint
+    - bundle install
 script: bundle exec rake
