@@ -84,8 +84,9 @@ build-stretch:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:stretch
 
-stage: test
-script:
+build-latest:
+ stage: test
+ script:
   - docker build -t buildpack-latest $CI_PROJECT_DIR/xenial
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
