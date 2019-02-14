@@ -60,6 +60,14 @@ build-xenial:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:xenial
 
+build-bionic:
+ stage: test
+ script:
+  - docker build -t buildpack-bionic $CI_PROJECT_DIR/bionic
+  - docker tag buildpack-bionic udienz/buildpack:bionic
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:bionic
+
 build-wheezy:
  stage: test
  script:
@@ -84,9 +92,8 @@ build-stretch:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:stretch
 
-build-latest:
- stage: test
- script:
+stage: test
+script:
   - docker build -t buildpack-latest $CI_PROJECT_DIR/xenial
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
