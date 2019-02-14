@@ -33,15 +33,10 @@ build-$x:
   - docker push udienz/buildpack:$x" >> $OUT
 done
 echo "
-stage: test
-script:
-  - docker build -t buildpack-latest \$CI_PROJECT_DIR/xenial
+build-latest:
+ stage: test
+ script:
+  - docker build -t buildpack-latest \$CI_PROJECT_DIR/bionic
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
-  - docker push udienz/buildpack:latest
-
-trigger:
-  type: deploy
-  script:
-    - "curl -X POST -F token=$TOKEN -F ref=$REF_NAME https://git.mahyudd.in/api/v3/projects/155/trigger/builds"
-  when: on_success" >> $OUT
+  - docker push udienz/buildpack:latest" >> $OUT
