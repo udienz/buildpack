@@ -49,7 +49,7 @@ openmerge:
 
 build-latest:
  stage: test
-  except:
+ except:
   refs:
    - master
  script:
