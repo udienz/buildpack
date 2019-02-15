@@ -12,16 +12,11 @@ before_script:
  - docker info
 
 
-build-centos5:
- stage: test
- script:
-  - docker build -t buildpack-centos5 $CI_PROJECT_DIR/centos5
-  - docker tag buildpack-centos5 udienz/buildpack:centos5
-  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
-  - docker push udienz/buildpack:centos5
-
 build-centos6:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-centos6 $CI_PROJECT_DIR/centos6
   - docker tag buildpack-centos6 udienz/buildpack:centos6
@@ -30,6 +25,9 @@ build-centos6:
 
 build-centos7:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-centos7 $CI_PROJECT_DIR/centos7
   - docker tag buildpack-centos7 udienz/buildpack:centos7
@@ -38,6 +36,9 @@ build-centos7:
 
 build-precise:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-precise $CI_PROJECT_DIR/precise
   - docker tag buildpack-precise udienz/buildpack:precise
@@ -46,6 +47,9 @@ build-precise:
 
 build-trusty:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-trusty $CI_PROJECT_DIR/trusty
   - docker tag buildpack-trusty udienz/buildpack:trusty
@@ -54,6 +58,9 @@ build-trusty:
 
 build-xenial:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-xenial $CI_PROJECT_DIR/xenial
   - docker tag buildpack-xenial udienz/buildpack:xenial
@@ -62,6 +69,9 @@ build-xenial:
 
 build-bionic:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-bionic $CI_PROJECT_DIR/bionic
   - docker tag buildpack-bionic udienz/buildpack:bionic
@@ -70,6 +80,9 @@ build-bionic:
 
 build-wheezy:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-wheezy $CI_PROJECT_DIR/wheezy
   - docker tag buildpack-wheezy udienz/buildpack:wheezy
@@ -78,6 +91,9 @@ build-wheezy:
 
 build-jessie:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-jessie $CI_PROJECT_DIR/jessie
   - docker tag buildpack-jessie udienz/buildpack:jessie
@@ -86,14 +102,31 @@ build-jessie:
 
 build-stretch:
  stage: test
+ except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-stretch $CI_PROJECT_DIR/stretch
   - docker tag buildpack-stretch udienz/buildpack:stretch
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:stretch
 
+openmerge:
+    image: udienz/gitlab-merge-resource
+    before_script: []
+    stage: deploy
+    except:
+        refs:
+            - master
+    script:
+        - HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME} GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${GITLAB_PRIVATE_TOKEN} $CI_PROJECT_DIR/utils/merge.sh
+    when: on_success
+
 build-latest:
  stage: test
+  except:
+  refs:
+   - master
  script:
   - docker build -t buildpack-latest $CI_PROJECT_DIR/bionic
   - docker tag buildpack-latest udienz/buildpack:latest
