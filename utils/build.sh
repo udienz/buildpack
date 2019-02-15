@@ -12,7 +12,6 @@ services:
 
 stages:
  - build
- - test
  - deploy
 
 before_script:
@@ -25,7 +24,7 @@ do
     echo $x
         echo "
 build-$x:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -48,7 +47,7 @@ openmerge:
     when: on_success
 
 build-latest:
- stage: test
+ stage: build
  except:
   refs:
    - master
