@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM debian:jessie
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
 RUN apt-get update \
