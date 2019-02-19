@@ -5,7 +5,6 @@ services:
 
 stages:
  - build
- - test
  - deploy
 
 before_script:
@@ -13,7 +12,7 @@ before_script:
 
 
 build-centos6:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -24,7 +23,7 @@ build-centos6:
   - docker push udienz/buildpack:centos6
 
 build-centos7:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -35,7 +34,7 @@ build-centos7:
   - docker push udienz/buildpack:centos7
 
 build-precise:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -46,7 +45,7 @@ build-precise:
   - docker push udienz/buildpack:precise
 
 build-trusty:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -57,7 +56,7 @@ build-trusty:
   - docker push udienz/buildpack:trusty
 
 build-xenial:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -68,7 +67,7 @@ build-xenial:
   - docker push udienz/buildpack:xenial
 
 build-bionic:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -79,7 +78,7 @@ build-bionic:
   - docker push udienz/buildpack:bionic
 
 build-wheezy:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -90,7 +89,7 @@ build-wheezy:
   - docker push udienz/buildpack:wheezy
 
 build-jessie:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -101,7 +100,7 @@ build-jessie:
   - docker push udienz/buildpack:jessie
 
 build-stretch:
- stage: test
+ stage: build
  except:
   refs:
    - master
@@ -123,7 +122,7 @@ openmerge:
     when: on_success
 
 build-latest:
- stage: test
+ stage: build
  except:
   refs:
    - master
