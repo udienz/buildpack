@@ -1,7 +1,11 @@
 image: docker:latest
 
 services:
- - docker:dind
+ - docker:18.09.7-dind
+
+variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
 
 stages:
  - build
@@ -87,17 +91,6 @@ build-focal:
   - docker tag buildpack-focal udienz/buildpack:focal
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:focal
-
-build-wheezy:
- stage: build
- except:
-  refs:
-   - master
- script:
-  - docker build -t buildpack-wheezy $CI_PROJECT_DIR/wheezy
-  - docker tag buildpack-wheezy udienz/buildpack:wheezy
-  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
-  - docker push udienz/buildpack:wheezy
 
 build-jessie:
  stage: build

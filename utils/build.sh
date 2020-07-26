@@ -1,14 +1,18 @@
 #!/bin/bash
 
 BASE=$CI_PROJECT_DIR
-DISTRO="centos6 centos7 precise trusty xenial bionic focal wheezy jessie stretch buster"
+DISTRO="centos6 centos7 precise trusty xenial bionic focal jessie stretch buster"
 OUT=../.gitlab-ci.yml
 
 cat > $OUT <<EOF
 image: docker:latest
 
 services:
- - docker:dind
+ - docker:18.09.7-dind
+
+variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
 
 stages:
  - build
