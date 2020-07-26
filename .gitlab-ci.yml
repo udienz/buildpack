@@ -92,17 +92,6 @@ build-focal:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:focal
 
-build-wheezy:
- stage: build
- except:
-  refs:
-   - master
- script:
-  - docker build -t buildpack-wheezy $CI_PROJECT_DIR/wheezy
-  - docker tag buildpack-wheezy udienz/buildpack:wheezy
-  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
-  - docker push udienz/buildpack:wheezy
-
 build-jessie:
  stage: build
  except:
