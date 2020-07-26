@@ -77,6 +77,17 @@ build-bionic:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:bionic
 
+build-focal:
+ stage: build
+ except:
+  refs:
+   - master
+ script:
+  - docker build -t buildpack-focal $CI_PROJECT_DIR/focal
+  - docker tag buildpack-focal udienz/buildpack:focal
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:focal
+
 build-wheezy:
  stage: build
  except:
@@ -109,6 +120,17 @@ build-stretch:
   - docker tag buildpack-stretch udienz/buildpack:stretch
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:stretch
+
+build-buster:
+ stage: build
+ except:
+  refs:
+   - master
+ script:
+  - docker build -t buildpack-buster $CI_PROJECT_DIR/buster
+  - docker tag buildpack-buster udienz/buildpack:buster
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:buster
 
 openmerge:
     image: udienz/gitlab-merge-resource
