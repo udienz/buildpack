@@ -8,7 +8,11 @@ cat > $OUT <<EOF
 image: docker:latest
 
 services:
- - docker:dind
+ - docker:18.09.7-dind
+
+variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
 
 stages:
  - build
