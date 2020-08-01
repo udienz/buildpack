@@ -203,7 +203,7 @@ build-latest:
   - docker build -t buildpack-latest $CI_PROJECT_DIR/focal
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
-  - docker push udienz/buildpack:alpine-latest
+  - docker push udienz/buildpack:latest
   - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
   - docker tag buildpack-latest git.wow.net.id:5050/mahyuddin/docker-buildpack:latest
   - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:latest
