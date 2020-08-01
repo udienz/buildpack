@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM udienz/buildpack:stretch
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
 RUN apt-get update \

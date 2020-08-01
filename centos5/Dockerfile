@@ -1,4 +1,4 @@
-FROM centos:centos5
+FROM udienz/buildpack:centos5
 
 MAINTAINER Mahyuddin Susanto <mahyuddin@wowrack.com>
 

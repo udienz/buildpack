@@ -1,5 +1,5 @@
 # base image
-FROM centos:centos7
+FROM udienz/buildpack:centos7
 
 MAINTAINER Mahyuddin Susanto <mahyuddin@wowrack.com>
 

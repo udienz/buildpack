@@ -1,4 +1,4 @@
-FROM ubuntu:precise
+FROM udienz/buildpack:precise
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
 RUN apt-get update \

@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM udienz/buildpack:focal
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
 RUN apt-get update \
