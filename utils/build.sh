@@ -36,7 +36,10 @@ build-$x:
   - docker build -t buildpack-$x \$CI_PROJECT_DIR/$x
   - docker tag buildpack-$x udienz/buildpack:$x
   - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
-  - docker push udienz/buildpack:$x" >> $OUT
+  - docker push udienz/buildpack:$x
+  - docker login git.wow.net.id:5050 -u mahyuddin -p\"\$GITLAB_PRIVATE_TOKEN\"
+  - docker tag buildpack-$x git.wow.net.id:5050/mahyuddin/docker-buildpack:$x
+  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:$x" >> $OUT
 done
 echo "
 openmerge:
@@ -59,4 +62,7 @@ build-latest:
   - docker build -t buildpack-latest \$CI_PROJECT_DIR/focal
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
-  - docker push udienz/buildpack:latest" >> $OUT
+  - docker push udienz/buildpack:$x
+  - docker login git.wow.net.id:5050 -u mahyuddin -p\"\$GITLAB_PRIVATE_TOKEN\"
+  - docker tag buildpack-latest git.wow.net.id:5050/mahyuddin/docker-buildpack:latest
+  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:latest" >> $OUT
