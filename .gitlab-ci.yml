@@ -125,6 +125,28 @@ build-buster:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:buster
 
+build-alpine-edge:
+ stage: build
+ except:
+  refs:
+   - master
+ script:
+  - docker build -t buildpack-alpine-edge $CI_PROJECT_DIR/alpine-edge
+  - docker tag buildpack-alpine-edge udienz/buildpack:alpine-edge
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:alpine-edge
+
+build-alpine-current:
+ stage: build
+ except:
+  refs:
+   - master
+ script:
+  - docker build -t buildpack-alpine-current $CI_PROJECT_DIR/alpine-current
+  - docker tag buildpack-alpine-current udienz/buildpack:alpine-current
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:alpine-current
+
 openmerge:
     image: udienz/gitlab-merge-resource
     before_script: []
@@ -142,7 +164,7 @@ build-latest:
   refs:
    - master
  script:
-  - docker build -t buildpack-latest $CI_PROJECT_DIR/bionic
+  - docker build -t buildpack-latest $CI_PROJECT_DIR/focal
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:latest

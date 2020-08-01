@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASE=$CI_PROJECT_DIR
-DISTRO="centos6 centos7 precise trusty xenial bionic focal jessie stretch buster"
+DISTRO="centos6 centos7 precise trusty xenial bionic focal jessie stretch buster alpine-edge alpine-current"
 OUT=../.gitlab-ci.yml
 
 cat > $OUT <<EOF
@@ -56,7 +56,7 @@ build-latest:
   refs:
    - master
  script:
-  - docker build -t buildpack-latest \$CI_PROJECT_DIR/bionic
+  - docker build -t buildpack-latest \$CI_PROJECT_DIR/focal
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
   - docker push udienz/buildpack:latest" >> $OUT
