@@ -136,16 +136,16 @@ build-alpine-edge:
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:alpine-edge
 
-build-alpine-current:
+build-alpine-latest:
  stage: build
  except:
   refs:
    - master
  script:
-  - docker build -t buildpack-alpine-current $CI_PROJECT_DIR/alpine-current
-  - docker tag buildpack-alpine-current udienz/buildpack:alpine-current
+  - docker build -t buildpack-alpine-latest $CI_PROJECT_DIR/alpine-latest
+  - docker tag buildpack-alpine-latest udienz/buildpack:alpine-latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
-  - docker push udienz/buildpack:alpine-current
+  - docker push udienz/buildpack:alpine-latest
 
 openmerge:
     image: udienz/gitlab-merge-resource
