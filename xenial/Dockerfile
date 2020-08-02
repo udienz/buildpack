@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM udienz/buildpack:xenial
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
 RUN apt-get update \

@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM udienz/buildpack:bionic
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
 RUN apt-get update \
