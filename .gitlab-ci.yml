@@ -15,17 +15,6 @@ before_script:
  - docker info
 
 
-build-centos6:
- stage: build
- except:
-  refs:
-   - master
- script:
-  - docker build -t buildpack-centos6 $CI_PROJECT_DIR/centos6
-  - docker tag buildpack-centos6 udienz/buildpack:centos6
-  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
-  - docker push udienz/buildpack:centos6
-
 build-centos7:
  stage: build
  except:
@@ -36,6 +25,17 @@ build-centos7:
   - docker tag buildpack-centos7 udienz/buildpack:centos7
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:centos7
+
+build-centos8:
+ stage: build
+ except:
+  refs:
+   - master
+ script:
+  - docker build -t buildpack-centos8 $CI_PROJECT_DIR/centos8
+  - docker tag buildpack-centos8 udienz/buildpack:centos8
+  - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
+  - docker push udienz/buildpack:centos8
 
 build-precise:
  stage: build
