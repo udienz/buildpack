@@ -25,9 +25,6 @@ build-centos6:
   - docker tag buildpack-centos6 udienz/buildpack:centos6
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:centos6
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-centos6 git.wow.net.id:5050/mahyuddin/docker-buildpack:centos6
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:centos6
 
 build-centos7:
  stage: build
@@ -39,9 +36,6 @@ build-centos7:
   - docker tag buildpack-centos7 udienz/buildpack:centos7
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:centos7
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-centos7 git.wow.net.id:5050/mahyuddin/docker-buildpack:centos7
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:centos7
 
 build-precise:
  stage: build
@@ -53,9 +47,6 @@ build-precise:
   - docker tag buildpack-precise udienz/buildpack:precise
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:precise
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-precise git.wow.net.id:5050/mahyuddin/docker-buildpack:precise
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:precise
 
 build-trusty:
  stage: build
@@ -67,9 +58,6 @@ build-trusty:
   - docker tag buildpack-trusty udienz/buildpack:trusty
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:trusty
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-trusty git.wow.net.id:5050/mahyuddin/docker-buildpack:trusty
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:trusty
 
 build-xenial:
  stage: build
@@ -81,9 +69,6 @@ build-xenial:
   - docker tag buildpack-xenial udienz/buildpack:xenial
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:xenial
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-xenial git.wow.net.id:5050/mahyuddin/docker-buildpack:xenial
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:xenial
 
 build-bionic:
  stage: build
@@ -95,9 +80,6 @@ build-bionic:
   - docker tag buildpack-bionic udienz/buildpack:bionic
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:bionic
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-bionic git.wow.net.id:5050/mahyuddin/docker-buildpack:bionic
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:bionic
 
 build-focal:
  stage: build
@@ -109,9 +91,6 @@ build-focal:
   - docker tag buildpack-focal udienz/buildpack:focal
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:focal
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-focal git.wow.net.id:5050/mahyuddin/docker-buildpack:focal
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:focal
 
 build-jessie:
  stage: build
@@ -123,9 +102,6 @@ build-jessie:
   - docker tag buildpack-jessie udienz/buildpack:jessie
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:jessie
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-jessie git.wow.net.id:5050/mahyuddin/docker-buildpack:jessie
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:jessie
 
 build-stretch:
  stage: build
@@ -137,9 +113,6 @@ build-stretch:
   - docker tag buildpack-stretch udienz/buildpack:stretch
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:stretch
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-stretch git.wow.net.id:5050/mahyuddin/docker-buildpack:stretch
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:stretch
 
 build-buster:
  stage: build
@@ -151,9 +124,6 @@ build-buster:
   - docker tag buildpack-buster udienz/buildpack:buster
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:buster
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-buster git.wow.net.id:5050/mahyuddin/docker-buildpack:buster
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:buster
 
 build-alpine-edge:
  stage: build
@@ -165,9 +135,6 @@ build-alpine-edge:
   - docker tag buildpack-alpine-edge udienz/buildpack:alpine-edge
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:alpine-edge
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-alpine-edge git.wow.net.id:5050/mahyuddin/docker-buildpack:alpine-edge
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:alpine-edge
 
 build-alpine-latest:
  stage: build
@@ -179,9 +146,6 @@ build-alpine-latest:
   - docker tag buildpack-alpine-latest udienz/buildpack:alpine-latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:alpine-latest
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-alpine-latest git.wow.net.id:5050/mahyuddin/docker-buildpack:alpine-latest
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:alpine-latest
 
 openmerge:
     image: udienz/gitlab-merge-resource
@@ -204,6 +168,3 @@ build-latest:
   - docker tag buildpack-latest udienz/buildpack:latest
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
   - docker push udienz/buildpack:latest
-  - docker login git.wow.net.id:5050 -u mahyuddin -p"$GITLAB_PRIVATE_TOKEN"
-  - docker tag buildpack-latest git.wow.net.id:5050/mahyuddin/docker-buildpack:latest
-  - docker push git.wow.net.id:5050/mahyuddin/docker-buildpack:latest
