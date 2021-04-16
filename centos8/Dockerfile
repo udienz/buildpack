@@ -1,5 +1,5 @@
 # base image
-FROM centos8
+FROM centos:8
 
 MAINTAINER Mahyuddin Susanto <mahyuddin@wowrack.com>
 
